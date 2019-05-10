@@ -46,12 +46,12 @@ rootless() {
     read -p "Podman as rootless"
     echo ""
 
-    read -p "--> podman pull alpine"
-    podman pull alpine
+    read -p "--> podman pull ubi8-minimal"
+    podman pull ubi8-minimal
     echo ""
 
-    read -p "--> podman run --net=host --rm alpine ls"
-    podman run --net=host alpine ls
+    read -p "--> podman run --net=host --rm ubi8-minimal ls"
+    podman run --net=host ubi8-minimal ls
     echo ""
 
     echo "Show Non Privileged containers"
@@ -250,7 +250,7 @@ Notice that the `podman pod start podtest` command started both containers.
     echo ""
 
     echo "
-Notice that the `podman pod pod stop podtest` command stopped both containers.
+Notice that the `podman pod stop podtest` command stopped both containers.
 "
     read -p "--> sudo podman ps"
     sudo podman ps
@@ -280,7 +280,7 @@ build() {
     sudo mkdir -p /var/lib/mycontainer
     mkdir -p $PWD/myvol
     cat >$PWD/myvol/Dockerfile <<_EOF
-FROM alpine
+FROM ubi8-minimal
 ENV foo=bar
 LABEL colour=blue
 _EOF
